@@ -1,234 +1,239 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+    }
 
-        html, body {
-            width: 100%;
-        }
+    html,
+    body {
+      width: 100%;
+    }
 
-        .bg {
-            width: 100%;
-            height: 100%;
-            background-image: url("./img/tianqi.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
+    .bg {
+      padding-top: 20px;
+      width: 100%;
+      height: 100%;
+      background-image: url("./img/tianqi.jpg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
 
-        .btn {
-            width: 30vw;
-            height: 10vh;
-            margin-left: 10px;
-            margin-bottom: 10px;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, .6);
-            font-size: 20px;
-            color: #ffffff;
-            line-height: 10vh;
-            text-align: center;
-        }
+    .btn {
+      width: 20vw;
+      height: 5vh;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, .6);
+      font-size: 16px;
+      color: #ffffff;
+      line-height: 5vh;
+      text-align: center;
+    }
 
-        .mask {
-            width: 100%;
-            height: 100%;
-            padding: 15px;
-            background: rgba(0, 0, 0, .6);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            display: none;
-        }
+    .mask {
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      background: rgba(0, 0, 0, .6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      display: none;
+    }
 
-        .mask .province {
-            float: left;
-            width: 20vw;
-            height: 5vh;
-            margin: 4px 5px;
-            background: #e3e3e3;
-            line-height: 5vh;
-            color: #000;
-            font-size: 18px;
-            text-align: center;
-            border-radius: 10px;
-        }
+    .mask .province {
+      float: left;
+      width: 20vw;
+      height: 5vh;
+      margin: 4px 5px;
+      background: #e3e3e3;
+      line-height: 5vh;
+      color: #000;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 10px;
+    }
 
-        .mask .city {
-            float: left;
-            width: 20vw;
-            height: 5vh;
-            margin: 3px 5px;
-            background: #e3e3e3;
-            line-height: 5vh;
-            color: #000000;
-            font-size: 14px;
-            text-align: center;
-        }
+    .mask .city {
+      float: left;
+      width: 20vw;
+      height: 5vh;
+      margin: 3px 5px;
+      background: #e3e3e3;
+      line-height: 5vh;
+      color: #000000;
+      font-size: 14px;
+      text-align: center;
+    }
 
-        .content {
-            width: 100%;
-            height: 100%;
-        }
+    .content {
+      padding-bottom: 10px;
+      width: 100%;
+      height: 100%;
+    }
 
-        h3 {
-            width: 96%;
-            height: 15vh;
-            border-radius: 10px;
-            margin: 0 auto 10px;
-            background: rgba(0, 0, 0, .5);
-            font-size: 30px;
-            color: #ffffff;
-            line-height: 15vh;
-            text-align: center;
-        }
+    h3 {
+      width: 96%;
+      height: 15vh;
+      border-radius: 10px;
+      margin: 0 auto 10px;
+      background: rgba(0, 0, 0, .5);
+      font-size: 30px;
+      color: #ffffff;
+      line-height: 15vh;
+      text-align: center;
+    }
 
-        .message {
-            width: 96%;
-            margin: 0 auto;
-            padding: 10px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, .5);
-        }
+    .message {
+      width: 96%;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .5);
+    }
 
-        .title {
-            width: 100%;
-            height: 10vh;
-            display: flex;
-            justify-content: space-between;
-        }
+    .title {
+      width: 100%;
+      height: 10vh;
+      display: flex;
+      justify-content: space-between;
+    }
 
-        .weather {
-            color: #ffffff;
-            width: 50%;
-            height: 100%;
-            text-align: center;
-            line-height: 10vh;
-            font-size: 20px;
-        }
+    .weather {
+      color: #ffffff;
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      line-height: 10vh;
+      font-size: 20px;
+    }
 
-        .weather-icon {
-            width: 50%;
-            height: 10vh;
-        }
+    .weather-icon {
+      width: 50%;
+      height: 10vh;
+    }
 
-        .weather-icon img {
-            display: block;
-            height: 100%;
-            margin: 0 auto;
-        }
+    .weather-icon img {
+      display: block;
+      height: 100%;
+      margin: 0 auto;
+    }
 
-        .temp-day {
-            width: 100%;
-            height: 8vh;
-            color: #ffffff;
-            font-size: 16px;
-            display: flex;
-            justify-content: space-between;
-        }
+    .temp-day {
+      width: 100%;
+      height: 8vh;
+      color: #ffffff;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
 
-        .temp-day span {
-            width: 33.33%;
-            height: 100%;
-            text-align: center;
-            line-height: 8vh;
-        }
+    .temp-day span {
+      width: 33.33%;
+      height: 100%;
+      text-align: center;
+      line-height: 8vh;
+    }
 
-        .wind {
-            width: 100%;
-            height: 8vh;
-            display: flex;
-            justify-content: space-between;
-        }
+    .wind {
+      width: 100%;
+      height: 8vh;
+      display: flex;
+      justify-content: space-between;
+    }
 
-        .wind span {
-            width: 50%;
-            height: 100%;
-            text-align: center;
-            line-height: 8vh;
-            color: #ffffff;
-            font-size: 20px;
-        }
+    .wind span {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      line-height: 8vh;
+      color: #ffffff;
+      font-size: 20px;
+    }
 
-        .week {
-            width: 100%;
-            height: 5vh;
-            color: #ffffff;
-            text-align: center;
-            line-height: 5vh;
-        }
+    .week {
+      width: 100%;
+      height: 5vh;
+      color: #ffffff;
+      text-align: center;
+      line-height: 5vh;
+    }
 
-        .temp {
-            width: 96%;
-            height: 50vh;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, .5);
-            margin: 0 auto;
-            margin-top: 10px;
-        }
+    .temp {
+      width: 96%;
+      height: 50vh;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .5);
+      margin: 10px auto 30px;
+    }
 
-        #main {
-        }
-    </style>
+    #main {}
+  </style>
 </head>
+
 <body>
-<div class="bg">
+  <div class="bg">
     <div class="btn">选择</div>
     <div class="mask"></div>
     <div class="content">
-        <h3></h3>
-        <section class="message">
+      <h3></h3>
+      <section class="message">
 
-        </section>
-        <div class="temp">
-            <div id="main" style="width: 100%;height: 50vh;background: red"></div>
-        </div>
-        <div class="daily">未来几天</div>
+      </section>
+      <div class="temp">
+        <div id="main" style="width: 100%;height: 50vh;"></div>
+      </div>
+      <!-- <div class="daily">未来几天</div> -->
     </div>
-</div>
+  </div>
 </body>
+
 </html>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/echarts.min.js"></script>
 <script>
-    let remote_ip_info = {
-        "ret": 1,
-        "start": -1,
-        "end": -1,
-        "country": "\u4e2d\u56fd",
-        "province": "\u5c71\u897f",
-        "city": "\u592a\u539f",
-        "district": "",
-        "isp": "",
-        "type": "",
-        "desc": ""
-    };
-    let city = remote_ip_info.city;
-    $("h3").html(city + "天气预告");
+  let baseUrl = 'https://api.jisuapi.com'
+  let remote_ip_info = {
+    "ret": 1,
+    "start": -1,
+    "end": -1,
+    "country": "\u4e2d\u56fd",
+    "province": "\u5c71\u897f",
+    "city": "\u592a\u539f",
+    "district": "",
+    "isp": "",
+    "type": "",
+    "desc": ""
+  };
+  let city = remote_ip_info.city;
+  $("h3").html(city + "天气预告");
 
-    function getWather(city) {
-        $.ajax({
-            url: "http://api.jisuapi.com/weather/query",
-            data: {
-                city: city,
-                appkey: "3503d1b15fac317b"
-            },
-            dataType: "jsonp",
-            success: function (res) {
-                let data = res.result;
-                console.log(data);
-                let str = "";
-                str += `
+  function getWather(city) {
+    $.ajax({
+      url: baseUrl + "/weather/query",
+      data: {
+        city: city,
+        appkey: "3503d1b15fac317b"
+      },
+      dataType: "jsonp",
+      success: function (res) {
+        let data = res.result;
+        console.log(data);
+        let str = "";
+        str += `
                     <div class="title">
                         <div class="weather">天气 : ${data.weather}</div>
                         <div class="weather-icon">
@@ -247,92 +252,168 @@
                     <div class="week">更新时间 :${data.week}</div>
 
                 `;
-                $("section").html(str);
+        $("section").html(str);
 
-                let daily = data.daily;
-                let weekArr = [];
-                let tempArr = [];
-                $.each(daily, function (i, v) {
-                    weekArr.push(v.date);
-                    tempArr.push(v.day.temphigh)
-                });
-                // setOption(weekArr, tempArr);
-            }
-        })
-    }
+        let daily = data.daily;
+        let weekArr = [];
+        let tempArr = [];
+        $.each(daily, function (i, v) {
+          weekArr.push(v.date);
+          tempArr.push(v.day.temphigh)
+        });
+        setOptionWeek(weekArr, tempArr);
+      }
+    })
+  }
 
-    getWather(city);
+  getWather(city);
 
-    $(".btn").click(function () {
-        $(".mask").show();
-        $.ajax({
-            url: "http://api.jisuapi.com/area/province?appkey=3503d1b15fac317b",
-            dataType: "jsonp",
-            success: function (res) {
-                let data = res.result;
-                let str = "";
-                $.each(data, function (i, v) {
-                    str += `
+  $(".btn").click(function () {
+    $(".mask").show();
+    $.ajax({
+      url: baseUrl + "/area/province?appkey=3503d1b15fac317b",
+      dataType: "jsonp",
+      success: function (res) {
+        let data = res.result;
+        let str = "";
+        $.each(data, function (i, v) {
+          str += `
                         <div class="province" id="${v.id}">
                             ${v.name}
                         </div>
                     `;
-                });
-                $(".mask").html(str);
-            }
-        })
-    });
+        });
+        $(".mask").html(str);
+      }
+    })
+  });
 
-    $(".mask")
-        .on("click", ".province", function () {
-            let id = $(this).attr("id");
-            $(".mask").empty();
-            $.ajax({
-                url: "http://api.jisuapi.com/area/city",
-                data: {
-                    parentid: id,
-                    appkey: "3503d1b15fac317b"
-                },
-                dataType: "jsonp",
-                success: function (res) {
-                    let data = res.result;
-                    let str = "";
-                    $.each(data, function (i, v) {
-                        str += `
+  $(".mask")
+    .on("click", ".province", function () {
+      let id = $(this).attr("id");
+      $(".mask").empty();
+      $.ajax({
+        url: baseUrl + "/area/city",
+        data: {
+          parentid: id,
+          appkey: "3503d1b15fac317b"
+        },
+        dataType: "jsonp",
+        success: function (res) {
+          let data = res.result;
+          let str = "";
+          $.each(data, function (i, v) {
+            str += `
                         <div class="city" id="${v.id}">
                             ${v.name}
                         </div>
                     `;
-                    });
-                    $(".mask").html(str);
-                }
-            });
-        })
-        .on("click", ".city", function () {
-            $(".mask").hide();
-            let name = $(this).html();
-            getWather(name);
-            $("h3").html(name + "天气预告");
-        });
+          });
+          $(".mask").html(str);
+        }
+      });
+    })
+    .on("click", ".city", function () {
+      $(".mask").hide();
+      let name = $(this).html();
+      getWather(name);
+      $("h3").html(name + "天气预告");
+    });
 
 
-    // function setOption(weekArr,tempArr) {
+  function setOptionWeek(weekArr, tempArr) {
     let myChart = echarts.init(document.getElementById('main'));
     let option = {
-        xAxis: {
-            type: 'category',
-            data: [1, 2, 3, 4, 5, 6, 7]
+      grid: {
+        show: false,
+        top: '15%',
+        left: '5%',
+        right: '10%',
+        bottom: '5%',
+        containLabel: true
+      },
+      legend: {
+        show: false,
+        selectedMode: false,
+        left: 'center',
+        bottom: '-2%',
+        height: 'auto',
+        itemWidth: 14,
+        itemHeight: 6,
+        data: 'name',
+        textStyle: {
+          fontSize: 16,
+          color: '#ffffff'
+        }
+      },
+      xAxis: {
+        type: 'category',
+        name: '时间',
+        nameTextStyle: {
+          lineHeight: 100
         },
-        yAxis: {
-            type: 'value'
+        nameGap: 5,
+        nameLocation: 'end',
+        axisTick: {
+          show: false,
         },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line',
-            smooth: true
-        }]
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#ABB0B6'
+          }
+        },
+        data: weekArr
+      },
+      yAxis: {
+        type: 'value',
+        name: '气温',
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          show: false
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#ffffff'
+          }
+        }
+      },
+      textStyle: {
+        color: '#ffffff'
+      },
+      series: [
+      {
+          name: 'name',
+          type: 'line',
+          symbol: 'none',
+          symbolSize: 8,
+          lineStyle: {
+            width: 3,
+            color: '#ffffff',
+            type: 'solid'
+          },
+          itemStyle: {
+            color: 'yellow'
+          },
+          markLine: {
+            symbol: 'none',
+            label: {
+              show: false
+            },
+            lineStyle: {
+              color: 'green',
+              type: 'dashed'
+            }
+          },
+          data: tempArr
+        }
+      ]
     };
     myChart.setOption(option);
-    // }
+  }
 
 </script>
