@@ -181,6 +181,63 @@
     }
 
     #main {}
+    
+    .xh, .xw{
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .xw-ul, .xh-ul{
+      padding: 5px;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 0 3px 3px #2b29291c;
+    }
+    .xh-ul >li{
+      padding: 5px 10px;
+    }
+    .xw-ul, .xh-ul >li >label{
+      display: block;
+      width: 100%;
+      font-size: 14px;
+      color: #999999;
+    }
+    .xw-ul, .xh-ul >li >p{
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .xw-ul >li{
+      padding: 5px 10px;
+      margin-bottom: 5px;
+      border-bottom: 1px dashed #eeeeee;
+    }
+    .xw-ul >li >a{
+      text-decoration: none;
+    }
+    .new-title{
+      width: 100%;
+      font-size: 14px;
+      color: #333333;
+    }
+    .new-laiyuan{
+      margin-top: 5px;
+      width: 100%;
+    }
+    .new-laiyuan >label, .new-laiyuan >label{
+      display: inline-block;
+      width: 50%;
+      color: #999999;
+    }
+
+    .text-two-overflow {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   </style>
 </head>
 
@@ -198,6 +255,16 @@
       </div>
       <!-- <div class="daily">未来几天</div> -->
     </div>
+    <div class="xh">
+      <ul class="xh-ul">
+
+      </ul>
+    </div>
+    <div class="xw">
+      <ul class="xw-ul">
+
+      </ul>
+    </div>
   </div>
 </body>
 
@@ -212,7 +279,7 @@
     "end": -1,
     "country": "\u4e2d\u56fd",
     "province": "\u5c71\u897f",
-    "city": "\u592a\u539f",
+    "city": "杭州",
     "district": "",
     "isp": "",
     "type": "",
@@ -416,4 +483,65 @@
     myChart.setOption(option);
   }
 
+  function getXiaoHua () {
+    $.ajax({
+      url: baseUrl + "/xiaohua/text",
+      data: {
+        pagesize: 10,
+        sort: 'rand',
+        appkey: "3503d1b15fac317b"
+      },
+      dataType: "jsonp",
+      success: function (res) {
+        console.log(res)
+        let str = ""
+        $.each(res.result.list, function (i, v) {
+          str += `
+            <li>
+              <label>开心一刻：${i + 1} time：${v.addtime}</label>
+              <p>${v.content}</p>
+            </li>
+          `
+        })
+        $('.xh-ul').html(str)
+      }
+    })
+  }
+
+  getXiaoHua()
+
+  function getNews () {
+    $.ajax({
+      url: baseUrl + "/news/get",
+      data: {
+        channel: '头条',
+        num: 40,
+        start: 0,
+        appkey: "3503d1b15fac317b"
+      },
+      dataType: "jsonp",
+      success: function (res) {
+        console.log(res)
+        let str = ""
+        $.each(res.result.list, function (i, v) {
+          str += `
+            <li>
+              <div class="new-title text-two-overflow">${v.title}</div>
+              <div class="new-laiyuan">
+                <label>${v.src}</label>
+                <span>${v.time}</span>
+              </div>
+            </li>
+          `
+        })
+        $('.xw-ul').html(str)
+      }
+    })
+  }
+
+  // $('.xw-ul > li').on('click', function() {
+  //   alert('详情')
+  // })
+
+  getNews()
 </script>
